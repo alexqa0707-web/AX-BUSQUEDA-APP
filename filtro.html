@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Botones</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.5s;
+        }
+
+        /* --- ESTILOS LOGIN --- */
+        #login-page {
+            width: 100%;
+            max-width: 350px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #login-page h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        #login-form input[type="text"],
+        #login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        #login-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #login-form button:hover {
+            background-color: #0056b3;
+        }
+
+        #login-error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Ocultar la página de botones inicialmente */
+        #buttons-page {
+            display: none;
+            width: 95%;
+            max-width: 900px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* --- ESTILOS DE LA REJILLA DE BOTONES --- */
+        #buttons-grid {
+            display: grid;
+            /* Esta línea es la clave: siempre dos columnas */
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; /* Reducido para móviles */
+            margin-top: 20px;
+        }
+        
+        /* Aumentamos el padding para el área de botones en móviles */
+        #buttons-page {
+             margin: 10px;
+             padding: 10px;
+        }
+
+
+        .action-button {
+            color: white;
+            padding: 15px 5px; /* Reducido el padding lateral para ganar espacio */
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            border-radius: 6px;
+            font-size: 14px; /* Reducido el tamaño de fuente para móviles */
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* No definimos background-color aquí, se asignará con JavaScript */
+        .action-button:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+        }
+
+        /* --- RESPONSIVE (Móviles y Tablets) --- */
+        /* Eliminamos el @media query que forzaba a 1 columna en móviles */
+        @media (max-width: 768px) {
+            #login-page {
+                margin: 20px;
+            }
+            /* ¡Importante! Aquí se asegura que la rejilla siempre sea de 2 columnas */
+            #buttons-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-page">
+        <h2>Acceso al Sistema</h2>
+        <form id="login-form">
+            <label for="username"><b>Usuario</b></label>
+            <input type="text" placeholder="Ingrese Usuario" name="username" id="username" required>
+
+            <label for="password"><b>Contraseña</b></label>
+            <input type="password" placeholder="Ingrese Contraseña" name="password" id="password" required>
+
+            <button type="submit">Iniciar Sesión</button>
+            <p id="login-error">Usuario o Contraseña incorrectos.</p>
+        </form>
+    </div>
+
+    <div id="buttons-page">
+        <h2>AX FILTRO VEHICULAR - BUSQUEDA AVANZADA</h2>
+        <div id="buttons-grid">
+            <a class="action-button" href="https://consultavehicular.sunarp.gob.pe/consulta-vehicular/inicio" target="_blank">BUSCAR PLACA</a>
+            <a class="action-button" href="https://www.munitacna.gob.pe/pagina/sf/servicios/papeletas" target="_blank">TACNA</a>
+            <a class="action-button" href="https://im01-autorizacion-sprl-production.apps.paas.sunarp.gob.pe/v1/sunarp-services/im/autorizacion/login" target="_blank">SUNARP XTRANET</a>
+            <a class="action-button" href="https://papeletas.munipuno.gob.pe/" target="_blank">PUNO</a>
+            <a class="action-button" href="https://sigueloplus.sunarp.gob.pe/siguelo/" target="_blank">SIGUELO SUNARP</a>
+            <a class="action-button" href="https://www.muniarequipa.gob.pe/oficina-virtual/c0nInfrPermisos/faltas/papeletas.php" target="_blank">AREQUIPA</a>
+            <a class="action-button" href="https://soat.pacifico.com.pe/experiencia/consulta-soat?" target="_blank">VIGENCIA DE SOAT</a>
+            <a class="action-button" href="https://m.satica.gob.pe/consultapapeletas.php" target="_blank">ICA</a>
+            <a class="action-button" href="https://rec.mtc.gob.pe/Citv/ArConsultaCitv" target="_blank">REVISION TECNICA</a>
+            <a class="action-button" href="https://www.sat.gob.pe/VirtualSAT/principal.aspx?mysession=BSk%2buvPiVQRjOutkh02OsAnsj099%2f6XMDRlRt6%2fkhkk%3d" target="_blank">LIMA</a>
+            <a class="action-button" href="https://servicios.sbs.gob.pe/reportesoat/" target="_blank">ACCIDENTES</a>
+            <a class="action-button" href="https://pagopapeletascallao.pe/" target="_blank">CALLAO</a>
+            <a class="action-button" href="https://fise.minem.gob.pe:23308/consulta-taller/pages/consultaTaller/inicio" target="_blank">DEUDAS VIGENTES GNV</a>
+            <a class="action-button" href="https://cusco.gob.pe/informatica/index.php/" target="_blank">CUSCO</a>
+            <a class="action-button" href="https://infogas.com.pe/consulta-placa/" target="_blank">ANTECEDENTES GNV</a>
+            <a class="action-button" href="http://sathuancayo.fortiddns.com:888/VentanillaVirtual/ConsultaPIT.aspx" target="_blank">HUANCAYO</a>
+            <a class="action-button" href="https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx" target="_blank">CAPTURAS SAT</a>
+            <a class="action-button" href="https://www.munihuanuco.gob.pe/wp-content/servicios/transportes/gt_papeletas.php" target="_blank">HUANUCO</a>
+            <a class="action-button" href="http://www.pit.gob.pe/pit2007/EstadoCuenta.aspx" target="_blank">CAPTURAS PIT</a>
+            <a class="action-button" href="https://www.sutran.gob.pe/consultas/record-de-infracciones/record-de-infracciones/" target="_blank">SUTRAN</a>
+            <a class="action-button" href="https://www.placas.pe/Public/CheckPlateStatus.aspx" target="_blank">PLACAS DUPLICADAS - TIPO DE USO</a>
+            <a class="action-button" href="https://scppp.mtc.gob.pe/" target="_blank">MTC</a>
+            </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('login-error');
+            const loginPage = document.getElementById('login-page');
+            const buttonsPage = document.getElementById('buttons-page');
+
+            const CORRECT_USER = "ALEKENG";
+            const CORRECT_PASS = "764532ALEX";
+
+            if (user === CORRECT_USER && pass === CORRECT_PASS) {
+                loginPage.style.display = 'none';
+                buttonsPage.style.display = 'block';
+                document.body.style.backgroundColor = '#e0e0e0';
+
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                errorMsg.style.display = 'none';
+
+                assignButtonColors(); 
+
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+
+        function assignButtonColors() {
+            const buttons = document.querySelectorAll('.action-button');
+            
+            // Tonos base para la columna izquierda (verdes/azules)
+            const leftColors = [
+                '#28a745', '#218838', '#1e7e34', '#17a2b8', '#138496', '#0f6674',
+                '#20c997', '#17a97b', '#007bff', '#0069d9', '#005cbf'
+            ];
+            // Tonos base para la columna derecha (naranjas/rojos)
+            const rightColors = [
+                '#ffc107', '#e0a800', '#d39e00', '#dc3545', '#c82333', '#bd2130',
+                '#fd7e14', '#e66800', '#fd953a', '#e84e0f', '#cc420c'
+            ];
+
+            buttons.forEach((button, index) => {
+                let baseColor;
+                
+                // Mantiene la lógica de color para las dos columnas
+                if (index % 2 === 0) { 
+                    baseColor = leftColors[Math.floor(index / 2) % leftColors.length];
+                } else { 
+                    baseColor = rightColors[Math.floor(index / 2) % rightColors.length];
+                }
+
+                button.style.backgroundColor = baseColor;
+
+                // Función para oscurecer un color hexadecimal
+                function darkenColor(hex, percent) {
+                    var f = parseInt(hex.slice(1), 16),
+                        t = percent < 0 ? 0 : 255,
+                        p = percent < 0 ? percent * -1 : percent,
+                        R = f >> 16,
+                        G = (f >> 8) & 0x00ff,
+                        B = f & 0x0000ff;
+                    return "#" + (
+                            0x1000000 +
+                            (Math.round((t - R) * p) + R) * 0x10000 +
+                            (Math.round((t - G) * p) + G) * 0x100 +
+                            (Math.round((t - B) * p) + B)
+                        ).toString(16).slice(1);
+                }
+
+                const hoverColor = darkenColor(baseColor, 0.15); // Oscurece 15%
+
+                // Asignar el color de hover dinámicamente
+                button.addEventListener('mouseenter', () => {
+                    button.style.backgroundColor = hoverColor;
+                });
+                button.addEventListener('mouseleave', () => {
+                    button.style.backgroundColor = baseColor;
+                });
+            });
+        }
+        
+    </script>
+
+</body>
+</html>
